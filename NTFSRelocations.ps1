@@ -29,7 +29,7 @@ function Display-Options {
         $optionDictionary[$index] = $ntfsDriveLetter
         $index++
     }
-    Write-Host "`nWhich drive(s) would you like to scan??" -f Blue
+    Write-Host "`nWhich drive(s) would you like to scan?" -f Blue
     foreach ($key in $optionDictionary.Keys | Sort-Object) {
         Write-Host "[" -f White -NoNewline; Write-Host "$key" -f Green -NoNewline; Write-Host "] " -f White -NoNewline;
         Write-Host "$($optionDictionary[$key])"
