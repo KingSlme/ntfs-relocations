@@ -76,7 +76,7 @@ function Get-NTFS-Relocations {
     Write-Host "-> " -f Yellow -NoNewline
     $stringToMatch = Read-Host
     foreach ($ntfsDriveLetter in $ntfsDriveLetters) {
-        Write-Host "Analyzing $($ntfsDriveLetter.ToUpper()) Journal..." -ForegroundColor Blue
+        Write-Host "Analyzing $($ntfsDriveLetter.ToUpper()) Journal..." -f Blue
         $ntfsDriveLetterNoColon = $ntfsDriveLetter.Replace(":", "")
         fsutil usn readjournal $ntfsDriveLetter csv | findstr /i /c:$stringToMatch | findstr /i /c:0x00001000 > "$env:AppData\oldNames_$ntfsDriveLetterNoColon.txt"
         fsutil usn readjournal $ntfsDriveLetter csv | findstr /i /c:$stringToMatch | findstr /i /c:0x00002000 > "$env:AppData\newNames_$ntfsDriveLetterNoColon.txt"
